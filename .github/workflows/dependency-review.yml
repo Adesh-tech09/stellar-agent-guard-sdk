@@ -51,5 +51,5 @@ jobs:
         uses: actions/dependency-review-action@v4
         with:
           fail-on-severity: high
-          # Reviewed and accepted advisories go here as GHSA ids. Empty today.
-          allow-ghsas: []
+          # Reviewed and accepted advisories go here as a comma-separated
+          # `allow-ghsas` string. Empty today, so the input is omitted.
