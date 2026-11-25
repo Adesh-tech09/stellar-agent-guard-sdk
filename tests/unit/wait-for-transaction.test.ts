@@ -60,7 +60,12 @@ describe("waitForTransaction()", () => {
       ledger: 512,
       events: { contractEventsXdr: [xdr.ScVal.scvVoid()] },
     }));
-    const result = await waitForTransaction({ server, hash: HASH, timeoutMs: 1_000, clock: new FakeClock() });
+    const result = await waitForTransaction({
+      server,
+      hash: HASH,
+      timeoutMs: 1_000,
+      clock: new FakeClock(),
+    });
 
     assert.equal(result.kind, "confirmed");
     if (result.kind !== "confirmed") throw new Error("unreachable");

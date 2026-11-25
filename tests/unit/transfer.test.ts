@@ -16,7 +16,12 @@ import {
   type StrKeyAddress,
 } from "../../src/policy.ts";
 import type { PreFlightConfigInput } from "../../src/preflight.ts";
-import { checkTransfer, checkTransferFrom, buildTransferCall, buildTransferFromCall } from "../../src/transfer.ts";
+import {
+  checkTransfer,
+  checkTransferFrom,
+  buildTransferCall,
+  buildTransferFromCall,
+} from "../../src/transfer.ts";
 
 const TOKEN = "CDCYDGBGS5AZ5BZS6XY2SK2PHJHSOEGTN3N4INCK34KF6GU2BGC7Z6MB" as ContractAddress;
 const AGENT_ACCOUNT = "GDUYKWVFLVISVOM5FK5KTBA446VQQ7NBRRFMLNLKLISKL26LJGKUVRHT" as StrKeyAddress;

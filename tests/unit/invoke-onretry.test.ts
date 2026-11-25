@@ -33,7 +33,9 @@ const staleRejection = () => ({
   status: "FAILED",
   hash: "stale",
   resultXdr: null,
-  diagnosticEventsXdr: ["scecExceededLimit: operation byte-write resources exceeds amount specified"],
+  diagnosticEventsXdr: [
+    "scecExceededLimit: operation byte-write resources exceeds amount specified",
+  ],
 });
 
 const sequenceRejection = () => ({
@@ -108,7 +110,9 @@ describe("invoke() onRetry hook", () => {
   it("fires once per retry, never for the first attempt, matching retry.retries", async () => {
     const server = mockServer({
       getTransaction: (hash) =>
-        hash === "tx-1" ? staleRejection() : { status: rpc.Api.GetTransactionStatus.SUCCESS, ledger: 9 },
+        hash === "tx-1"
+          ? staleRejection()
+          : { status: rpc.Api.GetTransactionStatus.SUCCESS, ledger: 9 },
     });
     const { events, callback } = recorder();
 
@@ -235,7 +239,12 @@ describe("invoke() onRetry hook", () => {
 
     const outcome = await invoke(
       params(server, {
-        retry: { maxAttempts: 2, baseDelayMs: 100, random: () => 0.5, sleep: async () => undefined },
+        retry: {
+          maxAttempts: 2,
+          baseDelayMs: 100,
+          random: () => 0.5,
+          sleep: async () => undefined,
+        },
         onRetry: () => {
           throw new Error("consumer bug");
         },
